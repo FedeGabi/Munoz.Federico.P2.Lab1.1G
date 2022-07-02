@@ -1,0 +1,70 @@
+# depslib dependency file v1.0
+1656716160 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\filter.c
+	"filter.h"
+
+1656720879 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"movie.h"
+
+1656719385 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\linkedlist.h
+
+1656717056 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\controller.c
+	"Controller.h"
+	<stdio.h>
+
+1656717012 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\controller.h
+	"LinkedList.h"
+	"movie.h"
+	"menu.h"
+
+1656715455 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\movie.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"LinkedList.h"
+
+1656720477 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"menu.h"
+	"Controller.h"
+	"filter.h"
+	"ordenamiento.h"
+
+1656714980 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\menu.h
+	"LinkedList.h"
+
+1656720375 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\menu.c
+	"menu.h"
+
+1656715741 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\parser.c
+	"Parser.h"
+
+1656715492 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\parser.h
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"movie.h"
+
+1656715576 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\movie.c
+	"movie.h"
+
+1656716687 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\filter.h
+	"LinkedList.h"
+	"movie.h"
+
+1656718832 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\ordenamiento.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"movie.h"
+
+1656721467 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\ordenamiento.c
+	"ordenamiento.h"
+	<time.h>
+
