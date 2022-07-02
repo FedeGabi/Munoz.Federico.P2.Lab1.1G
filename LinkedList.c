@@ -521,13 +521,14 @@ LinkedList* ll_map (LinkedList* this, void*(*pFunc) (void* element))
     if(this != NULL && pFunc != NULL && nuevoLinked!=NULL)
     {
         void* aux=NULL;
+        aux = (eMovie*) aux;
         int len= ll_len(this);
         for(int i =0 ; i< len; i++)
         {
-            eMovie* aux=(eMovie*) movie_newMovie();
+            eMovie* aux= movie_newmovie();
             if(aux!=NULL)
             {
-                 aux=(eMovie*)pFunc(ll_get(this,i));
+                 aux=pFunc(ll_get(this,i));
                  ll_add(nuevoLinked, aux);
             }
         }

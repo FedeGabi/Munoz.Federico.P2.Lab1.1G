@@ -36,7 +36,11 @@ void* generarAleatorio(void* a)
         if(movie!=NULL)
         {
             movie->duracion=numero;
+            //mostrarMovie(movie);
+           //system("pause");        // carga el aleatorio en cada elemento pero no guarda la lista
         }
     }
+    //mostrarMovie(movie);
+    //system("pause");
     return movie;
 }

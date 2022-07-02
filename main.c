@@ -64,6 +64,7 @@ int main()
             break;
         case 5:
             ll_sort(listaMovies, movie_sortGeneroDuracion, 1);
+            controller_ListMovies(listaAuxiliar);
 
             break;
         case 6:

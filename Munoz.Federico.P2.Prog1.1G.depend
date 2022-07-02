@@ -2,7 +2,7 @@
 1656716160 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\filter.c
 	"filter.h"
 
-1656720879 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\linkedlist.c
+1656722838 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -11,23 +11,24 @@
 
 1656719385 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\linkedlist.h
 
-1656717056 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\controller.c
+1656722918 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\controller.c
 	"Controller.h"
 	<stdio.h>
+	"movie.h"
 
 1656717012 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\controller.h
 	"LinkedList.h"
 	"movie.h"
 	"menu.h"
 
-1656715455 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\movie.h
+1656722393 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\movie.h
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<string.h>
 	"LinkedList.h"
 
-1656720477 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\main.c
+1656721873 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -51,7 +52,7 @@
 	"LinkedList.h"
 	"movie.h"
 
-1656715576 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\movie.c
+1656722564 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\movie.c
 	"movie.h"
 
 1656716687 c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\filter.h
@@ -64,7 +65,7 @@
 	<string.h>
 	"movie.h"
 
-1656721467 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\ordenamiento.c
+1656723118 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\ordenamiento.c
 	"ordenamiento.h"
 	<time.h>
 

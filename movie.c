@@ -1,13 +1,13 @@
 #include "movie.h"
 
-eMovie* movie_newMovie()
+eMovie* movie_newmovie()
 {
     return (eMovie*)malloc(sizeof(eMovie)*1);
 }
 
 eMovie* movie_parametros(char* id, char* titulo, char* genero, char* duracion)
 {
-    eMovie* nuevomovie= movie_newMovie();
+    eMovie* nuevomovie= movie_newmovie();
 
     int intmovie = atoi(id);
     float floatDuracion = atof(duracion);
@@ -134,9 +134,9 @@ int movie_getDuracion(eMovie* movie, float* duracion )
 //////         --------------          --------------------       /////////
 
 
-void mostrarMovie(eMovie* movie, LinkedList* listaMovies)
+void mostrarMovie(eMovie* movie)
 {
-    if(movie!=NULL && listaMovies != NULL)
+    if(movie!=NULL)
     {
         printf("%d, %s, %s, %.2f hs\n", movie->id,
                                          movie->titulo,

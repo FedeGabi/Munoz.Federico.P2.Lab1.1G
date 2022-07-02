@@ -1,5 +1,6 @@
 #include "Controller.h"
 #include <stdio.h>
+#include "movie.h"
 
 int controller_loadMoviesFromText(char *path, LinkedList* listaMovies)
 {
@@ -27,13 +28,13 @@ int controller_ListMovies(LinkedList *listaMovies)
 {
     int retorno = 0;
     int len;
-    eMovie* movie;
+    eMovie* movie ;//= movie_newmovie();
     if (listaMovies != NULL && movie != NULL)
     {
         len = ll_len(listaMovies);
         for (int i = 0; i < len; i++)
         {
-            movie= (eMovie*) ll_get(listaMovies, i);		//muestro array de vuelos
+            movie= (eMovie*) ll_get(listaMovies, i);		//
             mostrarMovie(movie);
             retorno = 1;
         }
@@ -51,7 +52,7 @@ int controller_ListMovies(LinkedList *listaMovies)
  int controller_saveAsText(char *path, LinkedList *listaMovies)
 {
     int retorno = 0;
-    eMovie *movie = movie_newMovie();
+    eMovie *movie = movie_newmovie();
     if (path != NULL && listaMovies != NULL && movie != NULL)
     {
         FILE *pFile = fopen(path, "w");
