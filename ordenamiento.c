@@ -32,11 +32,12 @@ void* generarAleatorio(void* a)
     eMovie* movie;
     float numero = rand() % (5-1+1) + 1;
     if(movie!=NULL){
-    eMovie* movie = (eMovie*)a;
+    movie = (eMovie*)a;
         if(movie!=NULL)
         {
             movie->duracion=numero;
-            //mostrarMovie(movie);
+
+           // mostrarMovie(movie);
            //system("pause");        // carga el aleatorio en cada elemento pero no guarda la lista
         }
     }

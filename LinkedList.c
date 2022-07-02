@@ -515,17 +515,14 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
     return filterLinked;
 }
 
-LinkedList* ll_map (LinkedList* this, void*(*pFunc) (void* element))
+LinkedList* ll_map(LinkedList* this, void*(*pFunc) (void*))
 {
     LinkedList* nuevoLinked = ll_newLinkedList();
     if(this != NULL && pFunc != NULL && nuevoLinked!=NULL)
     {
-        void* aux=NULL;
-        aux = (eMovie*) aux;
         int len= ll_len(this);
         for(int i =0 ; i< len; i++)
-        {
-            eMovie* aux= movie_newmovie();
+        {   eMovie* aux = movie_newmovie();
             if(aux!=NULL)
             {
                  aux=pFunc(ll_get(this,i));

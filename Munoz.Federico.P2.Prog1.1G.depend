@@ -2,7 +2,7 @@
 1656716160 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\filter.c
 	"filter.h"
 
-1656722838 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\linkedlist.c
+1656724843 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -65,7 +65,7 @@
 	<string.h>
 	"movie.h"
 
-1656723118 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\ordenamiento.c
+1656725001 source:c:\users\fedec\onedrive\desktop\labo\munoz.federico.p1.lab1.1g\munoz.federico.p2.prog1.1g\ordenamiento.c
 	"ordenamiento.h"
 	<time.h>
 
