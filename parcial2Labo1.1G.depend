@@ -1,0 +1,82 @@
+# depslib dependency file v1.0
+1657904122 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\inputs.c
+	"inputs.h"
+
+1657888151 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\inputs.h
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+
+1658324076 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"movie.h"
+	"ordenamientos.h"
+	"filters.h"
+
+1658337592 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\linkedlist.h
+
+1658927625 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"inputs.h"
+	"Parser.h"
+	"Controller.h"
+	"LinkedList.h"
+	"filters.h"
+	"movie.h"
+
+1657903440 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\parser.h
+	"LinkedList.h"
+	"movie.h"
+
+1658327971 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\controller.h
+
+1657905703 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\movie.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1658930441 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"inputs.h"
+	"ordenamientos.h"
+	"mapeo.h"
+
+1657904820 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Parser.h"
+
+1657906679 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\movie.c
+	"movie.h"
+
+1658322329 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\mapeo.h
+	<stdio.h>
+	"movie.h"
+	<time.h>
+
+1657909168 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\mapeo.c
+	"mapeo.h"
+
+1657911632 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\ordenamientos.h
+	"movie.h"
+
+1657910485 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\ordenamientos.c
+	"ordenamientos.h"
+
+1658324039 source:c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\filters.c
+	"filters.h"
+
+1658324049 c:\users\fedec\onedrive\desktop\parcial2labo1.1g\parcial2labo1.1g\filters.h
+	<string.h>
+	"movie.h"
+

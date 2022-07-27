@@ -1,7 +1,6 @@
 #ifndef LINKEDLIST_H_INCLUDED
 #define LINKEDLIST_H_INCLUDED
 
-
 struct Node
 {
     void* pElement;                 //puntero al elemento (persona, empleado, etc.)
@@ -13,7 +12,6 @@ struct LinkedList
     Node* pFirstNode;
     int size;                       //cada vez que agrego o elimino un elemento size++/--
 }typedef LinkedList;
-
 
 
 //Publicas
@@ -41,6 +39,6 @@ LinkedList* ll_subList(LinkedList* this,int from,int to);
 LinkedList* ll_clone(LinkedList* this);
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*));
-LinkedList* ll_map (LinkedList* this, void*(*pFunc) (void* element));
+LinkedList* ll_map(LinkedList* lista, void*(*pFunc)(void*));
 
 #endif // LINKEDLIST_H_INCLUDED

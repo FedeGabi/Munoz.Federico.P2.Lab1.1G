@@ -1,77 +1,77 @@
 #include "movie.h"
 
-eMovie* movie_newmovie()
+
+eMovie* new_movie()
 {
-    return (eMovie*)malloc(sizeof(eMovie)*1);
+    eMovie* movie =(eMovie*)malloc(sizeof(eMovie));
+    return movie;
 }
 
-eMovie* movie_parametros(char* id, char* titulo, char* genero, char* duracion)
+eMovie* new_parametros(char* id, char* titulo, char* genero, char* duracion)
 {
-    eMovie* nuevomovie= movie_newmovie();
-
-    int intmovie = atoi(id);
-    float floatDuracion = atof(duracion);
-
-    if(id!=NULL && titulo!=NULL && genero!=NULL &&
-            duracion!=NULL)
+    eMovie* movie= new_movie();
+    float auxFloat;
+    int auxInt;
+    if(movie!=NULL && id!=NULL && titulo!=NULL && genero!=NULL && duracion!=NULL)
     {
-        if(nuevomovie!=NULL)
+        auxFloat=atof(duracion);
+        auxInt=atoi(id);
+
+        if(movie_setId(movie, auxInt) &&
+           movie_setTitulo(movie, titulo) &&
+           movie_setGenero(movie, genero) &&
+           movie_setDuracion(movie, auxFloat))
         {
-            if(!(movie_setIdmovie(nuevomovie,intmovie) &&
-                    movie_setTitulo(nuevomovie, titulo) &&
-                    movie_setGenero(nuevomovie, genero) &&
-                    movie_setDuracion(nuevomovie, floatDuracion)))
-            {
-                nuevomovie=NULL;
-            }
+
+        }
+        else{
+            printf("\nNo se pudieron cargar los datos de la pelicula\n");
+            system("pause");
+
+            free(movie);
+            movie=NULL;
         }
     }
-    return nuevomovie;
+    return movie;
 }
 
-
-int movie_setIdmovie(eMovie* movie, int idmovie )
+int movie_setId(eMovie* movie, int id)
 {
     int retorno=0;
-    if(movie!= NULL && idmovie>0)
+    if(movie!=NULL && id>0)
     {
-        movie->id=idmovie;
+        movie->idPeli=id;
         retorno=1;
     }
     return retorno;
 }
 
-
-int movie_getIdmovie(eMovie* movie, int* idmovie )
+int movie_getId(eMovie* movie, int* id)
 {
     int retorno=0;
-    if(movie!= NULL && idmovie>0)
+    if(movie!=NULL && id>0)
     {
-        *idmovie=movie->id;
+        *id=movie->idPeli;
         retorno=1;
     }
     return retorno;
 }
-
 
 int movie_setTitulo(eMovie* movie, char* titulo)
 {
     int retorno=0;
-    if(movie!= NULL && titulo !=NULL)
+    if(movie!=NULL && titulo!=NULL && strlen(titulo)<50)
     {
-        strlwr(titulo);
-        titulo[0]= toupper(titulo[0]);
         strcpy(movie->titulo, titulo);
         retorno=1;
     }
     return retorno;
 }
 
-
 int movie_getTitulo(eMovie* movie, char* titulo)
 {
     int retorno=0;
-    if(movie!= NULL && titulo !=NULL)
+    if(movie!=NULL && titulo!=NULL)
     {
         strcpy(titulo, movie->titulo);
         retorno=1;
@@ -79,26 +79,21 @@ int movie_getTitulo(eMovie* movie, char* titulo)
     return retorno;
 }
 
-
-
 int movie_setGenero(eMovie* movie, char* genero)
 {
     int retorno=0;
-    if(movie!= NULL && genero !=NULL)
+    if(movie!=NULL && genero!=NULL && strlen(genero)<50)
     {
-        strlwr(genero);
-        genero[0]= toupper(genero[0]);
         strcpy(movie->genero, genero);
         retorno=1;
     }
     return retorno;
 }
 
-
 int movie_getGenero(eMovie* movie, char* genero)
 {
     int retorno=0;
-    if(movie!= NULL && genero !=NULL)
+    if(movie!=NULL && genero!=NULL)
     {
         strcpy(genero, movie->genero);
         retorno=1;
@@ -106,11 +101,10 @@ int movie_getGenero(eMovie* movie, char* genero)
     return retorno;
 }
 
-
-int movie_setDuracion(eMovie* movie, float duracion )
+int movie_setDuracion(eMovie* movie, float duracion)
 {
     int retorno=0;
-    if(movie!=NULL && duracion>=0 && duracion<=23)
+    if(movie!=NULL && duracion>=0)
     {
         movie->duracion=duracion;
         retorno=1;
@@ -118,31 +112,21 @@ int movie_setDuracion(eMovie* movie, float duracion )
     return retorno;
 }
 
-int movie_getDuracion(eMovie* movie, float* duracion )
+int movie_getDuracion(eMovie* movie, float* duracion)
 {
     int retorno=0;
-    if(movie!=NULL && duracion!=NULL)
+    if(movie!=NULL && duracion>0)
     {
         *duracion=movie->duracion;
         retorno=1;
-
     }
     return retorno;
 }
-
-
-//////         --------------          --------------------       /////////
-
 
 void mostrarMovie(eMovie* movie)
 {
     if(movie!=NULL)
     {
-        printf("%d, %s, %s, %.2f hs\n", movie->id,
-                                         movie->titulo,
-                                         movie->genero,
-                                         movie->duracion
-                                                         );
+        printf("%d, %s, %s, %.2f\n", movie->idPeli, movie->titulo, movie->genero, movie->duracion);
     }
-
 }

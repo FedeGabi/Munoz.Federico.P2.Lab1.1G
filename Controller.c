@@ -1,16 +1,28 @@
-#include "Controller.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include "inputs.h"
+#include "Parser.h"
+#include "Controller.h"
+#include "LinkedList.h"
+#include "filters.h"
 #include "movie.h"
 
-int controller_loadMoviesFromText(char *path, LinkedList* listaMovies)
+/** \brief Carga los datos de los pasajeros desde el archivo data.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListPassenger LinkedList*
+ * \return int
+ *
+ */
+int controller_loadFromText(char *path, LinkedList *arrayListMovies)
 {
     int retorno = 0;
-    if (path != NULL && listaMovies != NULL)
+    if (path != NULL && arrayListMovies != NULL)
     {
         FILE *pFile = fopen(path, "r");
         if (pFile != NULL)  												// recorro el archivo de texto
         {
-            if (!parser_MoviesFromText(pFile, listaMovies))     //con parser cargo lo q hay en el archivo un array de movies
+            if (!parser_MovieFromText(pFile, arrayListMovies))     //con parser cargo lo q hay en el archivo un array de pasajeros
             {
 
             }
@@ -22,20 +34,45 @@ int controller_loadMoviesFromText(char *path, LinkedList* listaMovies)
     return retorno;
 }
 
+/** \brief Carga los datos de los pasajeros desde el archivo data.csv (modo binario).
+ *
+ * \param path char*
+ * \param pArrayListPassenger LinkedList*
+ * \return int
+ *
+ */
+//int controller_loadFromBinary(char *path, LinkedList *pArrayListPassenger) {
+//	int retorno = 0;
+//	if (path != NULL && pArrayListPassenger != NULL) {
+//		FILE *pFile = fopen(path, "rb");
+//		if (pFile != NULL) {
+//			if (parser_PassengerFromBinary(pFile, pArrayListPassenger)) {
+//				retorno = 1;
+//			} else {
+//
+//			}
+//		}
+//		fclose(pFile);
+//		pFile = NULL;
+//	}
+//	return retorno;
+//}
 
-
-int controller_ListMovies(LinkedList *listaMovies)
+int controller_ListMovies(LinkedList *pListaMovies)
 {
     int retorno = 0;
     int len;
-    eMovie* movie ;//= movie_newmovie();
-    if (listaMovies != NULL && movie != NULL)
+    eMovie* movie=NULL;
+    if (pListaMovies != NULL)
     {
-        len = ll_len(listaMovies);
+        len = ll_len(pListaMovies);
         for (int i = 0; i < len; i++)
         {
-            movie= (eMovie*) ll_get(listaMovies, i);		//
-            mostrarMovie(movie);
+            movie=ll_get(pListaMovies, i);
+            if(movie!=NULL)
+            {
+                mostrarMovie(movie);
+            }
             retorno = 1;
         }
     }
@@ -43,43 +80,99 @@ int controller_ListMovies(LinkedList *listaMovies)
     return retorno;
 }
 
-
-
-
-                    /////      saves     //////
-
-
- int controller_saveAsText(char *path, LinkedList *listaMovies)
+LinkedList* controller_filterMovies(LinkedList* pListMovies)
 {
-    int retorno = 0;
-    eMovie *movie = movie_newmovie();
-    if (path != NULL && listaMovies != NULL && movie != NULL)
+    LinkedList* auxLista;
+    int seguir=1;
+    if(pListMovies!=NULL)
     {
-        FILE *pFile = fopen(path, "w");
-        fprintf(pFile, "ID_PELI,TITULO,GENERO,DURACION\n"); //formateo el encabezado
-        for (int i = 0; i < ll_len(listaMovies); i++)   		//recorro el array de movies
+        do
         {
-
-            movie = (eMovie*) ll_get(listaMovies, i); //busco el elemento en el indice i y lo retorno en auxiliar movie
-            fprintf(pFile, "%d,%s,%s,%.0f\n", movie->id,
-                    movie->titulo, movie->genero, movie->duracion);
+            switch(mostrarMenuFilters())
+            {
+            case 1:
+                auxLista=ll_filter(pListMovies, filter_Action);
+                seguir=0;
+                break;
+            case 2:
+                auxLista=ll_filter(pListMovies, filter_Adventure);
+                seguir=0;
+                break;
+            case 3:
+                auxLista=ll_filter(pListMovies, filter_Comedy);
+                seguir=0;
+                break;
+            case 4:
+                auxLista=ll_filter(pListMovies, filter_Documentary);
+                seguir=0;
+                break;
+            case 5:
+                auxLista=ll_filter(pListMovies, filter_Drama);
+                seguir=0;
+                break;
+            case 6:
+                auxLista=ll_filter(pListMovies, filter_Horror);
+                seguir=0;
+                break;
+            case 7:
+                auxLista=ll_filter(pListMovies, filter_Musical);
+                seguir=0;
+                break;
+            case 8:
+                auxLista=ll_filter(pListMovies, filter_Romance);
+                seguir=0;
+                break;
+            case 9:
+                auxLista=ll_filter(pListMovies, filter_Thriller);
+                seguir=0;
+                break;
+            case 10:
+                auxLista=ll_filter(pListMovies, filter_Western);
+                seguir=0;
+                break;
+            default:
+                printf("\nOpcion incorrecta, reingrese\n");
+                system("pause");
+                break;
+            }
         }
-        ll_clear(listaMovies);
-        printf("\nARCHIVO GUARDADO CON EXITO!\n");
-        system("pause");
-        fclose(pFile);
-        retorno = 1;
+        while(seguir==1);
     }
-    return retorno;
+    return auxLista;
 }
 
-LinkedList* controller_clonAll(LinkedList *listaMovies)
+int controller_saveAsText(char* path, LinkedList* pListMovie )
 {
-    LinkedList* nuevaLista=NULL;
-    if (listaMovies != NULL)
+    int retorno=0;
+    int len;
+    FILE* pFile=NULL;
+    eMovie* auxMovie;
+    if(path!=NULL && pListMovie!=NULL)
     {
+         pFile= fopen(path, "w");
+        if(pFile!=NULL)
+        {
+            len=ll_len(pListMovie);
+            fprintf(pFile, "ID_PELI,TITULO,GENERO,DURACION\n");
+            for(int i=0; i<len ; i++)
+            {
+                auxMovie=(eMovie*)ll_get(pListMovie, i);
+                if(auxMovie!=NULL)
+                {
+                    fprintf(pFile, "%d,%s,%s,%.2f\n", auxMovie->idPeli,
+                                                        auxMovie->titulo,
+                                                        auxMovie->genero,
+                                                        auxMovie->duracion);
+                    retorno=1;
 
-        nuevaLista = ll_clone(listaMovies);
+                }else{
+                    printf("no existe la pelicula\n");
+                    system("pause");
+
+                }
+            }
+        }
     }
-    return nuevaLista;
+    fclose(pFile);
+    return retorno;
 }

@@ -3,9 +3,12 @@
 #include <string.h>
 #include "LinkedList.h"
 #include "movie.h"
+#include "ordenamientos.h"
+#include "filters.h"
 
-static Node* getNode(LinkedList* this, int nodeIndex);
-static int addNode(LinkedList* this, int nodeIndex,void* pElement);
+
+//static Node* getNode(LinkedList* this, int nodeIndex);
+//static int addNode(LinkedList* this, int nodeIndex,void* pElement);
 
 /** \brief Crea un nuevo LinkedList en memoria de manera dinamica
  *
@@ -478,8 +481,8 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
         {
             for(int j=i+1; j<len; j++)
             {
-                if((pFunc(ll_get(this,i),ll_get(this,j))>0 && order ==1)
-                || (pFunc(ll_get(this,i),ll_get(this,j))<1 && order ==0))
+                if((pFunc(ll_get(this,i),ll_get(this,j))>0)
+                || (pFunc(ll_get(this,i),ll_get(this,j))==0))
                 {
                     aux=ll_get(this, i);
                     ll_set(this, i, ll_get(this, j));
@@ -491,6 +494,7 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
     }
     return returnAux;
 }
+
 
 LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
 {
@@ -515,20 +519,27 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
     return filterLinked;
 }
 
-LinkedList* ll_map(LinkedList* this, void*(*pFunc) (void*))
+
+LinkedList* ll_map(LinkedList* lista, void*(*pFunc)(void*))
 {
-    LinkedList* nuevoLinked = ll_newLinkedList();
-    if(this != NULL && pFunc != NULL && nuevoLinked!=NULL)
+    LinkedList* auxLista= ll_newLinkedList();
+    void* elemento=NULL;
+    void* auxiliar=NULL;
+    if(lista!=NULL && pFunc!=NULL && auxLista!=NULL)
     {
-        int len= ll_len(this);
-        for(int i =0 ; i< len; i++)
-        {   eMovie* aux = movie_newmovie();
-            if(aux!=NULL)
+        int len =ll_len(lista);
+        for(int i=0; i<len; i++)
+        {
+            elemento=ll_get(lista, i);
+            if(elemento!=NULL)
             {
-                 aux=pFunc(ll_get(this,i));
-                 ll_add(nuevoLinked, aux);
+                auxiliar=pFunc(elemento);
+                if(auxiliar!=NULL)
+                {
+                    ll_add(auxLista, auxiliar);
+                }
             }
         }
     }
-    return nuevoLinked;
+    return auxLista;
 }

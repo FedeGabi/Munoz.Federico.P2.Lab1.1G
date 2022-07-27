@@ -1,85 +1,87 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include "menu.h"
+#include "LinkedList.h"
 #include "Controller.h"
-#include "filter.h"
-#include "ordenamiento.h"
-
-
+#include "inputs.h"
+#include "ordenamientos.h"
+#include "mapeo.h"
 
 int main()
 {
     int seguir=1;
-    int auxInt;
-    LinkedList* listaMovies = ll_newLinkedList();   // crea un nuevo LinkedList
-    LinkedList* listaAuxiliar = ll_newLinkedList();  // crea un nuevo LinkedList
-
-    if(listaMovies == NULL && listaAuxiliar != NULL)
+    LinkedList* listaMovies= ll_newLinkedList();
+    LinkedList* listaNueva= ll_newLinkedList();
+    LinkedList* listaFiltrada = ll_newLinkedList();
+    if(listaMovies==NULL || listaNueva ==NULL || listaFiltrada == NULL)
     {
-        printf("No se pudo conseguir espacio en memoria");
+        printf("No se pudo conseguir memoria\n");
         exit(1);
     }
-
-    do
-    {
-        switch(menu())
+    do{
+        switch(mostrarMenuPrincipal())
         {
-
-        case 1:
-            controller_loadMoviesFromText("movies.csv", listaMovies);
-            break;
-        case 2:
-            controller_ListMovies(listaMovies);
-            break;
-        case 3:
-            listaAuxiliar=ll_map(listaMovies, generarAleatorio);
-            controller_ListMovies(listaAuxiliar);
-            break;
-        case 4:
-            switch(menuGenero())
-            {
             case 1:
-                listaAuxiliar=ll_filter(listaMovies, filtrarGeneroAdventure);
+                if(controller_loadFromText("movies.csv", listaMovies))
+                {
+                    printf("Archivo cargado");
+                    system("pause");
+                }
                 break;
             case 2:
-                listaAuxiliar=ll_filter(listaMovies, filtrarGeneroComedy);
+                if(ll_len(listaMovies)!=0)
+                {
+                    controller_ListMovies(listaMovies);
+                }
+                else{
+                    printf("Lista vacia\n");
+                    system("pause");
+                }
                 break;
             case 3:
-                listaAuxiliar=ll_filter(listaMovies, filtrarGeneroDrama);
+                if(ll_len(listaMovies)!=0)
+                {
+                    listaNueva=ll_map(listaMovies, asignarDuracion);
+                    controller_ListMovies(listaNueva);
+                }
+                else{
+                    printf("Lista vacia\n");
+                    system("pause");
+                }
                 break;
             case 4:
-                listaAuxiliar=ll_filter(listaMovies, filtrarGeneroRomance);
+                listaFiltrada=controller_filterMovies(listaNueva);
+                controller_ListMovies(listaFiltrada);
+                controller_saveAsText("FilterGenero.csv", listaFiltrada);
                 break;
             case 5:
-                listaAuxiliar=ll_filter(listaMovies, filtrarGeneroAction);
+                if(ll_len(listaMovies)!=0)
+                {
+                    ll_sort(listaMovies, ordenarPeliculasPorGeneroYduracion, 1);
+                    controller_ListMovies(listaMovies);
+                }
+                else{
+                    printf("Lista vacia\n");
+                    system("pause");
+                }
                 break;
             case 6:
-                listaAuxiliar=ll_filter(listaMovies, filtrarGeneroMusical);
-                break;
-            default:
-                break;
-            }
-            controller_saveAsText("generoFiltrado.csv", listaAuxiliar);
-            break;
-        case 5:
-            ll_sort(listaMovies, movie_sortGeneroDuracion, 1);
-            controller_ListMovies(listaAuxiliar);
+                if(ll_len(listaMovies)!=0)
+                {
+                    controller_saveAsText("ordenadasGeneroDuracion.csv", listaMovies);
+                    printf("Archivo guardado con exito\n");
 
-            break;
-        case 6:
-            controller_saveAsText("savePeliculas.csv", listaMovies);
-            break;
-        case 7:
-            printf("chau!");
-            seguir=0;
-            break;
-        default:
-            printf("opcion invalida");
-            break;
+                }
+                else{
+                    printf("Lista vacia\n");
+                    system("pause");
+                }
+                break;
+            case 7:
+                printf("ADIOS!\n");
+                seguir=0;
+                break;
         }
-    }
-    while(seguir==1);
 
+    }while(seguir==1);
     return 0;
 }
